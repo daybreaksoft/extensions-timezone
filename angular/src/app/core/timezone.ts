@@ -1,20 +1,18 @@
 export class TimeZone {
+    constructor() { }
 
-    private _utcOffset: string;
-
-    constructor(utcOffset: string) {
-        this._utcOffset = utcOffset;
+    asLocalDateTime(input: Date | string | number, utcOffset: string): Date {
+        const date = new Date(input);
+        return new Date(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}${utcOffset}`);
     }
 
-    localDate(input: Date | string | number): Date {
-        return this._buildDateWithUtcOffset(new Date(input));
+    asUtcDateTime(input: Date | string | number): Date {
+        const date = new Date(input);
+        return new Date(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.000Z`);
     }
 
-    asUtc() {
-
-    }
-
-    private _buildDateWithUtcOffset(date: Date): Date {
-        return new Date(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}${this._utcOffset}`);
+    asUtcDate(input: Date | string | number): Date {
+        const date = new Date(input);
+        return new Date(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} 00:00:00.000Z`);
     }
 }

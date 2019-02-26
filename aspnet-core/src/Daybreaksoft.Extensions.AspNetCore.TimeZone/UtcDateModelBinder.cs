@@ -45,10 +45,14 @@ namespace Daybreaksoft.Extensions.AspNetCore.TimeZone
             try
             {
                 var value = valueProviderResult.FirstValue;
+                object model = null;
 
-                var dateTime = DateTime.Parse(value);
+                if (!string.IsNullOrEmpty(value))
+                {
+                    var dateTime = DateTime.Parse(value);
 
-                var model = new UtcDate(dateTime);
+                    model = new UtcDate(dateTime);
+                }
 
                 CheckModel(bindingContext, valueProviderResult, model);
 

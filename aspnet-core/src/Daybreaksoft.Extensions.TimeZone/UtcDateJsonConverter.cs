@@ -12,7 +12,7 @@ namespace Daybreaksoft.Extensions.TimeZone
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (DateTime.TryParse(reader.Value.ToString(), out var date))
+            if (reader.Value != null && DateTime.TryParse(reader.Value.ToString(), out var date))
             {
                 return new UtcDate(date);
             }

@@ -1,8 +1,8 @@
 {
   "name": "@daybreaksoft/extensions-timezone",
   "version": "1.0.0",
-  "private": true,
-  "description": "Example project from an angular.io guide.",
+  "private": false,
+  "description": "",
   "scripts": {
     "lint": "tslint ./src/**/*.ts -t verbose",
     "start": "ng serve",

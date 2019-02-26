@@ -46,9 +46,14 @@ namespace Daybreaksoft.Extensions.AspNetCore.TimeZone
             {
                 var value = valueProviderResult.FirstValue;
 
-                var dateTime = DateTime.Parse(value);
+                object model = null;
 
-                var model = new LocalDate(dateTime);
+                if (!string.IsNullOrEmpty(value))
+                {
+                    var dateTime = DateTime.Parse(value);
+
+                    model = new LocalDate(dateTime);
+                }
 
                 CheckModel(bindingContext, valueProviderResult, model);
 
